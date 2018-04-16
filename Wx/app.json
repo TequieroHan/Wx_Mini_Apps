@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "Page/welcome/welcome",
+    "Page/home/home"
+  ],
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  }
+}

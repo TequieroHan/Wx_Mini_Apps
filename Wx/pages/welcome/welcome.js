@@ -7,40 +7,56 @@ Page({
   data: {
   
   },
+  /*
+   *开启小程序按钮事件 touchend
+  **/
+  onTap:function(){
+    wx.navigateTo({
+      url: '../homes/home',
+      success: function(res) {
+        console.log("success");
+      },
+      fail: function (res) {
+         console.log("fail" + res);
+         },
+      complete: function (res) { console.log("complete");},
+    })
+
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log("onLoad");
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    console.log("onReady");
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    console.log("onShow");
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    console.log("onHide");
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    console.log("onUnload");
   },
 
   /**

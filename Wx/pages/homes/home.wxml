@@ -1,0 +1,32 @@
+<!--Page/home/home.wxml-->
+<view>
+  <swiper autoplay='true' interval='3000'indicator-dots='true' indicator-color="#fff">
+    <swiper-item>
+      <image class='image_header' src='../../image/post/xiaolong.jpg'></image>
+    </swiper-item>
+    <swiper-item> 
+      <image class='image_header' src='../../image/post/vr.png'></image>
+      </swiper-item>
+    <swiper-item>
+     <image class='image_header' src='../../image/post/sls.JPG'></image>
+    </swiper-item>
+  </swiper>
+   <block wx:for="{{post_key}}" wx:for-item="item"> 
+    <view >
+      <view class='heand_top'>
+        <image class='head_img' src="{{item.post_head_img}}"></image>
+        <text class='head_txt'>{{item.post_head_txt}}</text>
+      </view>
+
+      <text class='title'>{{item.title}}</text>
+      <image class='image_content' src="{{item.image_content}}"></image>
+      <text class='content'>{{item.content}}</text>
+      <view class='horizontal_size'>
+        <image src='../../image/icon/chat1.png'></image>
+        <text class='read'>{{item.read}}</text>
+        <image src='../../image/icon/view.png'></image>
+        <text class='good'>{{item.good}}</text>
+      </view>
+    </view>
+   </block> 
+</view>

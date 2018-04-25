@@ -1,8 +1,10 @@
 {
   "pages": [
-    "Page/welcome/welcome",
-    "Page/home/home"
+    "pages/welcome/welcome",
+    "pages/homes/home",
+    "pages/move/move"
   ],
+ 
   "networkTimeout": {
     "request": 20000,
     "connectSocket": 20000,

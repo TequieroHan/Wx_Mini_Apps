@@ -1,4 +1,4 @@
-// Page/home/home.js
+// Page/move/move.js
 Page({
 
   /**

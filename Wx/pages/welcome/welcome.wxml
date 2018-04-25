@@ -1,7 +1,7 @@
 <view class='contianer'>
   <image src='../../image/avatar/1.png'></image>
   <text class='user_name'>你的名字</text>
-  <view class='btn_welcome'>
+  <view class='btn_welcome' bind:tap="onTap">
     <text>开启小程序之旅</text>
   </view>
 </view>

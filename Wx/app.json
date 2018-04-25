@@ -4,7 +4,22 @@
     "pages/homes/home",
     "pages/move/move"
   ],
- 
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/homes/home",
+        "text": "阅读",
+        "iconPath": "image/tab/yuedu.png",
+        "selectedIconPath": "image/tab/yuedu_hl.png"
+      },
+      {
+        "pagePath": "pages/move/move",
+        "text": "电影",
+        "iconPath": "image/tab/dianying.png",
+        "selectedIconPath": "image/tab/dianying_hl.png"
+      }
+    ]
+  },
   "networkTimeout": {
     "request": 20000,
     "connectSocket": 20000,

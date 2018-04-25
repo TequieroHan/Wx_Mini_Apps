@@ -5,21 +5,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+
   },
   /*
    *开启小程序按钮事件 touchend
   **/
-  onTap:function(){
-    wx.navigateTo({
+  onTap: function () {
+    wx.reLaunch({
       url: '../homes/home',
-      success: function(res) {
+      success: function (res) {
         console.log("success");
       },
       fail: function (res) {
-         console.log("fail" + res);
-         },
-      complete: function (res) { console.log("complete");},
+        console.log("fail" + res);
+      },
+      complete: function (res) { console.log("complete"); },
     })
 
   },
@@ -63,20 +63,20 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

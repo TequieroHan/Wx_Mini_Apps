@@ -1,15 +1,15 @@
  <template  name ="content_template">
     <view class='heand_top'>
-        <image class='head_img' src="{{item.post_head_img}}"></image>
-        <text class='head_txt'>{{item.post_head_txt}}</text>
+        <image class='head_img' src="{{avatar}}"></image>
+        <text class='head_txt'>{{date}}</text>
     </view>
-      <text class='title'>{{item.title}}</text>
-      <image class='image_content' src="{{item.image_content}}"></image>
-      <text class='content'>{{item.content}}</text>
+      <text class='title'>{{title}}</text>
+      <image class='image_content' src="{{imgSrc}}"></image>
+      <text class='content'>{{content}}</text>
     <view class='horizontal_size'>
-        <image src='../../image/icon/chat1.png'></image>
-        <text class='read'>{{item.read}}</text>
-        <image src='../../image/icon/view.png'></image>
-        <text class='good'>{{item.good}}</text>
+        <image src='../../images/icon/chat1.png'></image>
+        <text class='read'>{{reading}}</text>
+        <image src='../../images/icon/view.png'></image>
+        <text class='good'>{{collection}}</text>
     </view>
  </template>

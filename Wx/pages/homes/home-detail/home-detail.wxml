@@ -1,0 +1,22 @@
+
+<view class="contianer">
+  <view class='top'>
+    <image class='top-image' src="{{isPlayingMusic?homedata.imgSrc:homedata.music.coverImg}}" />
+    <image class='top-image-music' bindtap='onTouchMusic' src="{{isPlayingMusic ?'/images/music/music-start.png':'/images/music/music-stop.png'}}" />
+  </view>
+  <view class='post-center'>
+    <image class='head-image' src="{{homedata.avatar}}" />
+    <text class='name'>{{homedata.author}}</text>
+    <text class='post'>发表于</text>
+    <text class='post-time'>{{homedata.dateTime}}</text>
+  </view>
+  <text class='title'>{{homedata.title}}</text>
+  <view class='tool'>
+      <view class='circle-img'>
+          <image bindtap='onCollent' src="{{isCollent ? '/images/icon/collection.png':'/images/icon/collection-anti.png'}}"/>
+          <image class="share-img" catchtap='onCatchtap' src='/images/icon/share.png' />  
+      </view>
+       <view class="horizon"></view>
+  </view>
+  <text class='content'>{{homedata.detail}}</text>
+</view>

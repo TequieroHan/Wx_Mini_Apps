@@ -1,19 +1,21 @@
 <!--Page/home/home.wxml-->
-<import src="home-item/home-item-template.wxml"/>
+<import src="home-item/home-item-template.wxml" />
 
 <view>
   <swiper autoplay='true' interval='3000' indicator-dots='true' indicator-color="#fff">
     <swiper-item>
-      <image class='image_header' src='../../image/post/xiaolong.jpg'></image>
+      <image class='image_header' src='../../images/post/xiaolong.jpg'></image>
     </swiper-item>
     <swiper-item>
-      <image class='image_header' src='../../image/post/vr.png'></image>
+      <image class='image_header' src='../../images/post/vr.png'></image>
     </swiper-item>
     <swiper-item>
-      <image class='image_header' src='../../image/post/sls.JPG'></image>
+      <image class='image_header' src='../../images/post/sls.JPG'></image>
     </swiper-item>
   </swiper>
-  <view wx:for="{{post_key}}" wx:for-item="item">
-      <template is="content_template" data="{{item}}"/>
-  </view>
+  <block wx:for="{{post_key}}" wx:for-item="item" wx:for-index="index">
+    <view bind:tap="onTap" data-postId="{{index}}">
+      <template is="content_template" data="{{...item}}" />
+    </view>
+  </block>
 </view>

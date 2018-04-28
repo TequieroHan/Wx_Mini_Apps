@@ -1,0 +1,22 @@
+.star-contianer {
+  display: flex;
+  flex-direction: row;
+}
+
+.star {
+  display: flex;
+  flex-direction: row;
+}
+
+.star image {
+  padding-left: 3rpx;
+  height: 17rpx;
+  width: 17rpx;
+  vertical-align: middle;
+}
+
+.give-a-mark {
+  padding-left: 10rpx;
+  font-size: 24rpx;
+  vertical-align: middle;
+}

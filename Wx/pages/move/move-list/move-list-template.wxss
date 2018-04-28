@@ -1,0 +1,33 @@
+@import "../move-item/move-items-template.wxss";
+
+.move-list-contianer {
+  display: flex;
+  flex-direction: column;
+}
+
+.more-template {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.top-title {
+  padding: 30rpx 20rpx 22rpx;
+  vertical-align: middle;
+}
+
+.more-right {
+  float: right;
+}
+
+.more-right image {
+  width: 9rpx;
+  height: 16rpx;
+  vertical-align: middle;
+}
+
+.more-right text {
+  vertical-align: middle;
+  margin-right: 10rpx;
+  color: #1f4ba5;
+}

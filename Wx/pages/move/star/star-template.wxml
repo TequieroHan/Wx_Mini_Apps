@@ -1,0 +1,12 @@
+<template name="starTemplate">
+  <view class='star-contianer'>
+    <view class='star'>
+      <image src='/images/icon/star.png' />
+      <image src='/images/icon/star.png' />
+      <image src='/images/icon/star.png' />
+      <image src='/images/icon/star.png' />
+      <image src='/images/icon/star.png' />
+    </view>
+    <text class='give-a-mark'>9.5</text>
+  </view>
+</template>

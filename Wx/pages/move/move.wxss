@@ -1,1 +1,6 @@
-/* Page/move/move.wxss */
+@import "move-list/move-list-template.wxss";
+
+page {
+  width: 100%;
+  height: 100%;
+}

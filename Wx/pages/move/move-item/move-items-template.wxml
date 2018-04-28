@@ -1,0 +1,9 @@
+<import src="../star/star-template.wxml" />
+
+<template name="moveTemplate">
+  <view class='move-item-contianer'>
+    <image class='surface' src='/images/p1716876999.jpg' />
+    <text class='title'>1234</text>
+    <template is="starTemplate" />
+  </view>
+</template>

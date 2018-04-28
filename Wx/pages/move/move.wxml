@@ -1,2 +1,4 @@
-<!--Page/move/move.wxml-->
-<text>Page/move/move.wxml</text>
+<import src="move-list/move-list-template.wxml" />
+<view>
+  <template is="moveListTemplate"/>
+</view>

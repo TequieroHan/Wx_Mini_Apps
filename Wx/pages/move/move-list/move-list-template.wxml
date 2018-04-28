@@ -1,0 +1,17 @@
+<import src="../move-item/move-items-template.wxml" />
+<template name="moveListTemplate">
+  <view class='move-list-contianer'>
+    <view class='top-title'>
+      <text>正在热映</text>
+      <view class='more-right'>
+        <text>更多</text>
+        <image src='/images/icon/arrow-right.png'></image>
+      </view>
+    </view>
+    <view class='more-template'>
+      <template is="moveTemplate" />
+      <template is="moveTemplate" />
+      <template is="moveTemplate" />
+    </view>
+  </view>
+</template>

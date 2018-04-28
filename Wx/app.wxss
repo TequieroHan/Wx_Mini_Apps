@@ -2,3 +2,7 @@ text{
   font-family: MicroSoft Yahei;
   font-size: 24rpx;
 }
+page {
+  width: 100%;
+  height: 100%;
+}

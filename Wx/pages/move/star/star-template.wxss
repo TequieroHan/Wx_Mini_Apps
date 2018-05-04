@@ -1,11 +1,13 @@
 .star-contianer {
   display: flex;
   flex-direction: row;
+  margin-bottom: 10rpx;
 }
 
 .star {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .star image {

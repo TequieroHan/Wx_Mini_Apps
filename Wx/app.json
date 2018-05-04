@@ -3,7 +3,9 @@
     "pages/welcome/welcome",
     "pages/homes/home",
     "pages/homes/home-detail/home-detail",
-    "pages/move/move"
+    "pages/move/move",
+    "pages/move/search/search",
+    "pages/move/more-move/more-move"
   ],
   "tabBar": {
     "list": [

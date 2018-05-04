@@ -3,6 +3,7 @@
 .move-list-contianer {
   display: flex;
   flex-direction: column;
+  background-color: #fff;
 }
 
 .more-template {

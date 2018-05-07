@@ -17,6 +17,29 @@ function startCount(originStart) {
   return stars;
 }
 
+function http(url, callBack, method) {
+  if (method === "") {
+    method = "GET";
+  }
+  wx.request({
+    url: url,
+    method: method,
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      // callBack(res.data) //若写这一句会有重复数据显示
+    },
+    fail: function (res) {
+      callBack(res.data)
+    },
+    complete: function (res) {
+      callBack(res.data)
+    }
+  });
+}
+
 module.exports = {
   startCount: startCount,
+  http: http,
 }

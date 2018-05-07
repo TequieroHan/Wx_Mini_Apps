@@ -10,25 +10,73 @@ Page({
     inTheaters: {},
     comingSoon: {},
     top250: {},
+    inSearch: {},
+    searchvalue: "",
     weekly: {},
     newMovies: {},
+    isSearchEmpty: true,
+    isEmpty: true,
+    totalCount: 0,
   },
-
-  onSearch: function (even) {
-    wx.navigateTo({
-      url: '/pages/move/search/search',
+  onDetails: function (even) {
+    console.log("详情")
+  },
+  /**
+   * 获取焦点时响应
+   */
+  onBindFocus: function (even) {
+    this.setData({
+      isSearchEmpty: false,
     })
   },
-
+  /**
+   * 失去焦点时响应
+   */
+  onBindBlur: function (even) {
+    this.data.totalCount += 0;
+    var value = even.detail.value;
+    if (value !== "") {
+      var inSearchURL = app.globalData.g_api + "/v2/movie/search?q=" + value;
+      this.movesData(inSearchURL, "inSearch", "搜索");
+      this.setData({
+        isSearchEmpty: false,
+        searchvalue: value,
+      })
+    } else {
+      this.setData({
+        isSearchEmpty: true,
+        searchvalue: "",
+        inSearch: {}
+      })
+    }
+  },
+  /**
+   * 使用关闭按钮
+   */
+  onCloseSearch: function (even) {
+    this.setData({
+      isSearchEmpty: true,
+      searchvalue: "",
+      inSearch: {}
+    })
+  },
+  /**
+   * 更多跳转
+   */
+  onMoreTop: function (even) {
+    var nametitle = even.currentTarget.dataset.nametitle;
+    wx.navigateTo({
+      url: '/pages/move/more-move/more-move?nametitle=' + nametitle,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     //正在上映
-    var inTheatersURL = app.globalData.g_api + "/v2/movie/in_theaters";
-    var comingSoonURL = app.globalData.g_api + "/v2/movie/coming_soon";
-    var top250URL = app.globalData.g_api + "/v2/movie/top250";
-
+    var inTheatersURL = app.globalData.g_api + "/v2/movie/in_theaters?start=0&count=3";
+    var comingSoonURL = app.globalData.g_api + "/v2/movie/coming_soon?start=0&count=3";
+    var top250URL = app.globalData.g_api + "/v2/movie/top250?start=0&count=3";
     this.movesData(inTheatersURL, "inTheaters", "正在上映");
     this.movesData(comingSoonURL, "comingSoon", "即将上映");
     this.movesData(top250URL, "top250", "Top250");
@@ -36,15 +84,16 @@ Page({
   /*
   *豆瓣网络请求
   */
-  movesData: function (moveulr, inTheaters, title) {
+  movesData: function (moveulr, netType, title) {
+    console.log("moveulr" + moveulr);
     var that = this;
     wx.request({
-      url: moveulr + "?start=0&count=3",
+      url: moveulr,
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        that.processDoubanData(res.data, inTheaters, title);
+        that.processDoubanData(res.data, netType, title);
       },
       fail: function (res) {
 
@@ -59,7 +108,6 @@ Page({
    */
   processDoubanData: function (data, settedKey, titleName) {
     var movies = [];
-
     for (var index in data.subjects) {
       var subject = data.subjects[index];
       var title = subject.title
@@ -76,7 +124,7 @@ Page({
       movies.push(temp);
     };
     var readyData = {};
-    readyData[settedKey] = { movies, nameTitle: titleName, };
+    readyData[settedKey] = { movies, nameTitle: titleName, netType: settedKey };
     this.setData(readyData);
   },
 
@@ -112,14 +160,19 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    console.log("下拉")
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (!this.data.isSearchEmpty) {
+      this.data.totalCount += 20;
+      var inSearchURL = app.globalData.g_api + "/v2/movie/search?q=" + this.data.searchvalue + "&start=" + this.data.totalCount + "&count=20";
+      this.movesData(inSearchURL, "inSearch", "搜索");
+      console.log("上拉" + inSearchURL)
+    }
   },
 
   /**

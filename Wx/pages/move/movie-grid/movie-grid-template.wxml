@@ -1,0 +1,11 @@
+<import src="../move-item/move-items-template.wxml" />
+
+<template name="moveGridTemplate">
+  <scroll-view class="grid-contianer">
+    <block wx:for="{{movies}}" wx:for-item="movie">
+      <view class="movie-grid-contianer">
+        <template is="moveTemplate" data="{{...movie}}" />
+      </view>
+    </block>
+  </scroll-view>
+</template>

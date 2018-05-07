@@ -3,16 +3,15 @@
   <view class='move-list-contianer'>
     <view class='top-title'>
       <text>{{nameTitle}}</text>
-      <view class='more-right'>
+      <view class='more-right' bindtap='onMoreTop' data-nameTitle='{{nameTitle}}'>
         <text>更多</text>
         <image src='/images/icon/arrow-right.png'></image>
       </view>
     </view>
     <view class='more-template'>
       <block wx:for="{{movies}}" wx:for-item="move">
-        <template is="moveTemplate" data="{{...move}}"/>
+        <template is="moveTemplate" data="{{...move}}" />
       </block>
-
     </view>
   </view>
 </template>

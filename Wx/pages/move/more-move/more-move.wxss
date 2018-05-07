@@ -1,1 +1,1 @@
-/* pages/move/more-move/more-move.wxss */
+@import "../movie-grid/movie-grid-template.wxss" 

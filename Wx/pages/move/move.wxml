@@ -1,16 +1,23 @@
 <import src="move-list/move-list-template.wxml" />
+<import src="movie-grid/movie-grid-template.wxml" />
 <view class='contianer'>
-  <view class='search-view' bindtap="onSearch">
-    <image class='search' src='/images/icon/search.png' />
-    <text class='search-name' >搜索电影</text>
+  <view class='search-view'>
+    <icon type="search" class="search" size="13" color="#405f80" />
+    <input class='search-name' style='text' placeholder="搜索电影" value='{{searchvalue}}' bindfocus='onBindFocus' bindblur='onBindBlur' />
+    <image class='search-back' bindtap='onCloseSearch' src='/images/icon/xx.png' wx:if="{{!isSearchEmpty}}" />
   </view>
-  <view class='move-contianer'>
-    <template is="moveListTemplate" data="{{...inTheaters}}" />
+  <view wx:if="{{isSearchEmpty}}">
+    <view class='move-contianer'>
+      <template is="moveListTemplate" data="{{...inTheaters}}" />
+    </view>
+    <view class='move-contianer'>
+      <template is="moveListTemplate" data="{{...comingSoon}}" />
+    </view>
+    <view class='move-contianer'>
+      <template is="moveListTemplate" data="{{...top250}}" />
+    </view>
   </view>
-  <view class='move-contianer'>
-    <template is="moveListTemplate" data="{{...comingSoon}}" />
-  </view>
-  <view class='move-contianer'>
-    <template is="moveListTemplate" data="{{...top250}}" />
+  <view class='search-panel' style='background-color:#fff' wx:if="{{!isSearchEmpty}}">
+    <template is="moveGridTemplate" data="{{...inSearch}}" />
   </view>
 </view>

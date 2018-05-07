@@ -1,7 +1,7 @@
 <import src="../star/star-template.wxml" />
 
 <template name="moveTemplate">
-  <view class='move-item-contianer' >
+  <view class='move-item-contianer' bindtap='onDetails' >
     <image class='surface' src="{{image}}" />
     <text class='title'>{{title}}</text>
     <template is="starTemplate" data="{{stars:stars, average: average}}"/>

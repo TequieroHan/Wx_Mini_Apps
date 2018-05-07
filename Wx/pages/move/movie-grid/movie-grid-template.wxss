@@ -1,0 +1,11 @@
+@import "../move-item/move-items-template.wxss";
+
+.grid-contianer {
+  margin: 40rpx 0 40rpx 6rpx;
+}
+
+.movie-grid-contianer {
+  
+  float: left;
+  margin-bottom: 20rpx;
+}

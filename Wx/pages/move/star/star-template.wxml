@@ -7,7 +7,7 @@
     </view>
     <text class='give-a-mark'>{{average}}</text>
   </view>
-  <view class='star' wx:else>
+  <view class='star-contianer' wx:else>
     <text class='give-a-mark'>暂无评分</text>
   </view>
 </template>

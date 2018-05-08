@@ -11,12 +11,14 @@ Page({
     comingSoon: {},
     top250: {},
     inSearch: {},
+
     searchvalue: "",
     weekly: {},
     newMovies: {},
     isSearchEmpty: true,
     isEmpty: true,
     totalCount: 0,
+
   },
   onDetails: function (even) {
     console.log("详情")
@@ -35,7 +37,7 @@ Page({
   onBindBlur: function (even) {
     this.data.totalCount += 0;
     var value = even.detail.value;
-    if (value !== "") {
+    if (value !== "" && value !== this.data.searchvalue) {
       var inSearchURL = app.globalData.g_api + "/v2/movie/search?q=" + value;
       this.movesData(inSearchURL, "inSearch", "搜索");
       this.setData({
@@ -85,7 +87,6 @@ Page({
   *豆瓣网络请求
   */
   movesData: function (moveulr, netType, title) {
-    console.log("moveulr" + moveulr);
     var that = this;
     wx.request({
       url: moveulr,
@@ -107,6 +108,8 @@ Page({
    * 豆瓣网络数据接受
    */
   processDoubanData: function (data, settedKey, titleName) {
+    var that = this;
+
     var movies = [];
     for (var index in data.subjects) {
       var subject = data.subjects[index];
@@ -123,9 +126,22 @@ Page({
       }
       movies.push(temp);
     };
-    var readyData = {};
-    readyData[settedKey] = { movies, nameTitle: titleName, netType: settedKey };
-    this.setData(readyData);
+    if (!this.data.isSearchEmpty) {
+
+      var totalMovies = {};
+      if (!this.data.isEmpty) {
+        totalMovies[settedKey] = { movies: that.data.inSearch.movies.concat(movies) };
+      } else {
+        totalMovies[settedKey] = { movies };
+        this.data.isEmpty = false;
+      }
+      this.setData(totalMovies);
+    } else {
+      var readyData = {};
+      readyData[settedKey] = { movies, nameTitle: titleName, netType: settedKey };
+      this.setData(readyData);
+    }
+
   },
 
   /**
@@ -160,7 +176,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log("下拉")
   },
 
   /**
@@ -171,7 +186,6 @@ Page({
       this.data.totalCount += 20;
       var inSearchURL = app.globalData.g_api + "/v2/movie/search?q=" + this.data.searchvalue + "&start=" + this.data.totalCount + "&count=20";
       this.movesData(inSearchURL, "inSearch", "搜索");
-      console.log("上拉" + inSearchURL)
     }
   },
 

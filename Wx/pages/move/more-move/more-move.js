@@ -28,7 +28,6 @@ Page({
     switch (title) {
       case "正在上映":
         url = app.globalData.g_api + "/v2/movie/in_theaters?start=" + totalCount + "&count=20";
-        console.log("httpUrl")
         break;
       case "即将上映":
         url = app.globalData.g_api + "/v2/movie/coming_soon?start=" + totalCount + "&count=20";

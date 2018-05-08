@@ -90,6 +90,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("onLoad")
     var that = this;
     var postid = options.postid;
     var homeData = postsData.postList[postid];
@@ -102,7 +103,7 @@ Page({
     });
     if (app.globalData.g_isPlayingMusic && app.globalData.g_currentMusicPostId === postid) {
       this.setData({
-        isPlayingMusic: true
+        isPlayingMusic: false
       })
     }
     wx.onBackgroundAudioPause(function () {
@@ -111,18 +112,20 @@ Page({
       if (currentPage.data.postcurrentid === that.data.postcurrentid) {
         if (app.globalData.g_currentMusicPostId == that.data.postcurrentid) {
           that.setData({
-            isPlayingMusic: false
+            isPlayingMusic: true
           })
         }
       }
-      app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_isPlayingMusic = true;
+      app.globalData.g_currentMusicPostId=null;
     });
 
     wx.onBackgroundAudioStop(function () {
       that.setData({
-        isPlayingMusic: false
+        isPlayingMusic: true
       })
-      app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_isPlayingMusic = true;
+      app.globalData.g_currentMusicPostId = null;
     });
 
     wx.onBackgroundAudioPlay(function () {
@@ -134,11 +137,12 @@ Page({
         if (app.globalData.g_currentMusicPostId == that.data.postcurrentid) {
           // 播放当前页面音乐才改变图标
           that.setData({
-            isPlayingMusic: true
+            isPlayingMusic: false
           })
         }
       }
-      app.globalData.g_isPlayingMusic = true;
+      app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_currentMusicPostId = that.data.postcurrentid;
     });
     //处理收藏按钮
     this.collectContent();

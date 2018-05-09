@@ -5,7 +5,8 @@
     "pages/homes/home-detail/home-detail",
     "pages/move/move",
     "pages/move/search/search",
-    "pages/move/more-move/more-move"
+    "pages/move/more-move/more-move",
+    "pages/move/movie-details/movie-details"
   ],
   "tabBar": {
     "list": [

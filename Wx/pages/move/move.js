@@ -11,7 +11,6 @@ Page({
     comingSoon: {},
     top250: {},
     inSearch: {},
-
     searchvalue: "",
     weekly: {},
     newMovies: {},
@@ -21,7 +20,11 @@ Page({
 
   },
   onDetails: function (even) {
-    console.log("详情")
+    var id = even.currentTarget.dataset.postid;
+    var posttitle = even.currentTarget.dataset.posttitle;
+    wx.navigateTo({
+      url: '/pages/move/movie-details/movie-details?postid=' + id + "&posttitle=" + posttitle,
+    })
   },
   /**
    * 获取焦点时响应
@@ -126,8 +129,7 @@ Page({
       }
       movies.push(temp);
     };
-    if (!this.data.isSearchEmpty) {
-
+    if (!this.data.isSearchEmpty) {//判断是否是搜索页面
       var totalMovies = {};
       if (!this.data.isEmpty) {
         totalMovies[settedKey] = { movies: that.data.inSearch.movies.concat(movies) };
@@ -138,10 +140,10 @@ Page({
       this.setData(totalMovies);
     } else {
       var readyData = {};
+      //数据结构 data{settedKey{movies}}
       readyData[settedKey] = { movies, nameTitle: titleName, netType: settedKey };
       this.setData(readyData);
     }
-
   },
 
   /**
